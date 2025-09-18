@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tradebook — Trading Courses</title>
+  <meta name="description" content="Tradebook - Beginner, Medium, Master Trade courses" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b1220;
+      --card: #0f1a2b;
+      --accent: #2dd4bf;
+      --accent-2: #60a5fa;
+      --muted: #9fb3c8;
+      --glass: rgba(255,255,255,0.03);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(180deg,#071026 0%, #07122a 100%);
+      color:#e6f2fb;
+      -webkit-font-smoothing:antialiased;
+    }
+    .container{max-width:1000px;margin:24px auto;padding:18px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;font-weight:800;color:#021427;font-size:20px;box-shadow:0 8px 30px rgba(0,0,0,0.6)
+    }
+    h1{margin:0;font-size:clamp(20px,3.6vw,28px)}
+    .tag{color:var(--muted);font-size:0.95rem}
+
+    /* hero */
+    .hero{display:flex;gap:20px;align-items:center;justify-content:space-between;margin-top:18px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .hero-left{max-width:640px}
+    .lead{color:var(--muted);margin-top:8px}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021427;font-weight:700;text-decoration:none;margin-top:12px}
+
+    /* product list */
+    .products{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+    .product{
+      display:flex;align-items:center;gap:14px;padding:14px;background:var(--card);border-radius:12px;border:1px solid rgba(255,255,255,0.03);
+      cursor:pointer;transition:transform .14s ease, box-shadow .14s;
+    }
+    .product:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(2,6,23,0.6)}
+    .thumb{
+      width:100px;height:72px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--muted);
+      border:1px solid rgba(255,255,255,0.02)
+    }
+    .pinfo{flex:1}
+    .pinfo h3{margin:0 0 6px 0}
+    .price{font-weight:800;color:var(--accent)}
+    .sequence{color:var(--muted);font-size:0.9rem;margin-bottom:6px}
+
+    /* small responsive */
+    @media (max-width:720px){
+      .hero{flex-direction:column;align-items:flex-start}
+      .thumb{width:88px;height:64px}
+    }
+
+    /* modal */
+    .overlay{position:fixed;inset:0;background:rgba(2,6,23,0.7);display:none;align-items:center;justify-content:center;padding:18px;z-index:60}
+    .modal{background:linear-gradient(180deg,#061223,#07172a);padding:18px;border-radius:12px;max-width:520px;width:100%;border:1px solid rgba(255,255,255,0.04);box-shadow:0 20px 60px rgba(2,6,23,0.7);color:#eaf6ff}
+    .modal h2{margin:0 0 8px 0}
+    .modal p{color:var(--muted);margin:0 0 12px 0}
+    .qr-wrap{display:flex;gap:12px;align-items:center}
+    .qr{
+      width:180px;height:180px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;
+      border:6px solid #fff;
+    }
+    .qr img{max-width:100%;height:auto;display:block}
+    .modal .note{font-size:0.92rem;color:var(--muted);margin-top:10px}
+
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn-ghost{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--muted);cursor:pointer}
+    .btn-primary{padding:10px 12px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021427;border:none;cursor:pointer;font-weight:700}
+
+    .whatsapp-box{display:none;margin-top:12px;padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(255,255,255,0.03)}
+    .whatsapp-box a{display:inline-block;text-decoration:none;padding:10px 12px;border-radius:10px;background:#25D366;color:#021427;font-weight:700;margin-right:8px}
+    .close-x{position:absolute;right:18px;top:18px;background:transparent;border:0;color:var(--muted);font-weight:700;cursor:pointer}
+
+    footer{margin-top:20px;color:var(--muted);font-size:0.9rem;text-align:center}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">TB</div>
+        <div>
+          <h1>Tradebook</h1>
+          <div class="tag">Trading courses | Start → Medium → Master</div>
+        </div>
+      </div>
+      <div style="text-align:right">
+        <div class="tag">Contact: <strong>+91 7280098773</strong></div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left">
+        <h2>Tradebook — Trading course series</h2>
+        <p class="lead">3-step learning path: Beginner → Medium → Master Trade. Har book me clear sequence aur practice tasks milenge. Aage badhne se pehle pehle book complete karo.</p>
+        <a class="btn" href="#products">Buy Now</a>
+      </div>
+      <div style="text-align:right;color:var(--muted)">
+        <div style="font-weight:700;font-size:18px">Secure Payments</div>
+        <div class="tag">PhonePe QR · WhatsApp support</div>
+      </div>
+    </section>
+
+    <main id="products" class="products" aria-live="polite">
+      <!-- product 1 -->
+      <div class="product" data-name="Beginner Book Course" data-price="499">
+        <div class="thumb" aria-hidden="true">
+          <!-- simple candlestick icon SVG -->
+          <svg width="68" height="44" viewBox="0 0 68 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="10" width="8" height="26" rx="1" fill="#cfecee"/>
+            <rect x="20" y="6" width="8" height="30" rx="1" fill="#9fe3d8"/>
+            <rect x="34" y="16" width="8" height="20" rx="1" fill="#7bd8c9"/>
+            <rect x="48" y="4" width="8" height="32" rx="1" fill="#2dd4bf"/>
+          </svg>
+        </div>
+        <div class="pinfo">
+          <div class="sequence">1 • Sequence: Beginner</div>
+          <h3>Beginner Book Course</h3>
+          <div class="muted">Intro to charts, basic strategies, risk management</div>
+        </div>
+        <div style="text-align:right">
+          <div class="price">₹499/-</div>
+          <div class="tag" style="color:var(--muted);font-size:0.9rem">Click to buy</div>
+        </div>
+      </div>
+
+      <!-- product 2 -->
+      <div class="product" data-name="Medium" data-price="899">
+        <div class="thumb" aria-hidden="true">
+          <svg width="68" height="44" viewBox="0 0 68 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="4" width="8" height="36" rx="1" fill="#cfecee"/>
+            <rect x="20" y="12" width="8" height="28" rx="1" fill="#9fe3d8"/>
+            <rect x="34" y="8" width="8" height="32" rx="1" fill="#7bd8c9"/>
+            <rect x="48" y="18" width="8" height="22" rx="1" fill="#2dd4bf"/>
+          </svg>
+        </div>
+        <div class="pinfo">
+          <div class="sequence">2 • Sequence: Intermediate</div>
+          <h3>Medium</h3>
+          <div class="muted">Advanced setups, indicators, trade journaling</div>
+        </div>
+        <div style="text-align:right">
+          <div class="price">₹899/-</div>
+          <div class="tag" style="color:var(--muted);font-size:0.9rem">Click to buy</div>
+        </div>
+      </div>
+
+      <!-- product 3 -->
+      <div class="product" data-name="Master Trade" data-price="1399">
+        <div class="thumb" aria-hidden="true">
+          <svg width="68" height="44" viewBox="0 0 68 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="18" width="8" height="22" rx="1" fill="#cfecee"/>
+            <rect x="20" y="6" width="8" height="34" rx="1" fill="#9fe3d8"/>
+            <rect x="34" y="12" width="8" height="28" rx="1" fill="#7bd8c9"/>
+            <rect x="48" y="2" width="8" height="38" rx="1" fill="#2dd4bf"/>
+          </svg>
+        </div>
+        <div class="pinfo">
+          <div class="sequence">3 • Sequence: Master</div>
+          <h3>Master Trade</h3>
+          <div class="muted">Professional techniques, psychology, portfolio management</div>
+        </div>
+        <div style="text-align:right">
+          <div class="price">₹1399/-</div>
+          <div class="tag" style="color:var(--muted);font-size:0.9rem">Click to buy</div>
+        </div>
+      </div>
+    </main>
+
+    <footer>© <span id="year"></span> Tradebook · Secure payments via PhonePe · Support on WhatsApp</footer>
+  </div>
+
+  <!-- modal overlay -->
+  <div id="overlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document" id="modal">
+      <button class="close-x" id="closeModal" aria-label="close">✕</button>
+      <h2 id="modalTitle">Buy — </h2>
+      <p id="modalSubtitle">Scan the PhonePe QR to pay. Price: <strong id="modalPrice"></strong></p>
+
+      <div class="qr-wrap">
+        <div class="qr" id="qrBox" title="PhonePe QR">
+          <!-- PLACEHOLDER IMAGE: Replace src below with your PhonePe QR image file path or URL.
+               e.g. <img src="phonepe-qr.png" alt="PhonePe QR">  -->
+          <img id="qrImage" src="" alt="PhonePe QR (replace phonepe-qr.png)" />
+        </div>
+
+        <div style="flex:1">
+          <div class="note">Scan the QR with PhonePe/Google Pay/Any UPI app. Payment confirm karne ke baad <strong>“I HAVE PAID”</strong> par click karo — fir WhatsApp link milega jisse user seedha DM kar payega.</div>
+
+          <div class="actions">
+            <button id="paidBtn" class="btn-primary">I HAVE PAID</button>
+            <button id="showQRBtn" class="btn-ghost">Show QR Full</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="whatsapp-box" id="waBox">
+        <p style="margin:0 0 8px 0">Payment confirmed — ab aap hamare WhatsApp par directly message bhej sakte ho:</p>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <a id="waOpen" href="#" target="_blank" rel="noopener noreferrer">Open WhatsApp</a>
+          <button id="copyBtn" class="btn-ghost">Copy WhatsApp Link</button>
+          <div style="color:var(--muted)">Number: <strong>+91 7280098773</strong></div>
+        </div>
+        <div style="margin-top:8px;color:var(--muted);font-size:0.95rem">Message template will open automatically. Users can DM you there.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- full screen QR preview (optional) -->
+  <div id="qrFullOverlay" class="overlay" style="display:none;">
+    <div style="max-width:520px;width:100%;padding:18px;border-radius:12px;background:#071422;border:1px solid rgba(255,255,255,0.03);">
+      <button id="closeFull" class="close-x" style="position:relative;right:0;top:0">✕</button>
+      <div style="text-align:center">
+        <img id="qrFullImage" src="" alt="PhonePe QR Full" style="max-width:100%;height:auto;border-radius:10px;background:#fff;padding:8px" />
+        <div style="color:var(--muted);margin-top:10px">Scan to pay ₹<span id="qrFullPrice"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- CONFIG: change QR image path if you have actual file ---
+    // Put your PhonePe QR image file in same folder and name it: phonepe-qr.png
+    // Or use a full URL: const QR_SRC = "https://example.com/phonepe-qr.png"
+    const QR_SRC = "phonepe-qr.png"; // <-- replace if needed
+
+    // WhatsApp link (user provided)
+    const WA_LINK = "https://wa.me/+917280098773?text=*HELLO-SIR/MA'AM*";
+
+    // setup
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const products = document.querySelectorAll('.product');
+    const overlay = document.getElementById('overlay');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalSubtitle = document.getElementById('modalSubtitle');
+    const qrImage = document.getElementById('qrImage');
+    const paidBtn = document.getElementById('paidBtn');
+    const waBox = document.getElementById('waBox');
+    const waOpen = document.getElementById('waOpen');
+    const copyBtn = document.getElementById('copyBtn');
+    const showQRBtn = document.getElementById('showQRBtn');
+    const qrFullOverlay = document.getElementById('qrFullOverlay');
+    const qrFullImage = document.getElementById('qrFullImage');
+    const qrFullPrice = document.getElementById('qrFullPrice');
+    const closeFull = document.getElementById('closeFull');
+    const closeModal = document.getElementById('closeModal');
+
+    // set QR src (placeholder)
+    qrImage.src = QR_SRC;
+    qrFullImage.src = QR_SRC;
+
+    let current = null;
+
+    products.forEach(p => {
+      p.addEventListener('click', () => {
+        const name = p.getAttribute('data-name');
+        const price = p.getAttribute('data-price');
+        current = {name, price};
+        openModal(name, price);
+      });
+    });
+
+    function openModal(name, price){
+      modalTitle.textContent = `Buy — ${name}`;
+      modalPrice.textContent = `₹${price}/-`;
+      modalSubtitle.textContent = `Scan the PhonePe QR to pay. Price: ₹${price}/-`;
+      qrImage.src = QR_SRC;
+      qrFullImage.src = QR_SRC;
+      qrFullPrice.textContent = price;
+      waBox.style.display = "none";
+      overlay.style.display = "flex";
+      overlay.setAttribute('aria-hidden','false');
+    }
+
+    closeModal.addEventListener('click', closeModalFn);
+    overlay.addEventListener('click', function(e){
+      if(e.target === overlay) closeModalFn();
+    });
+
+    function closeModalFn(){
+      overlay.style.display = "none";
+      overlay.setAttribute('aria-hidden','true');
+    }
+
+    // "I HAVE PAID" logic: show WhatsApp link (client-side)
+    paidBtn.addEventListener('click', () => {
+      // In a real app, verify payment server-side. Here we simply show WhatsApp link after user clicks.
+      waBox.style.display = "block";
+      // set WA link with prefilled message including course name
+      const messageText = encodeURIComponent(`Hi, maine ${current.name} (₹${current.price}) purchase kar liya. Please share course access.`);
+      waOpen.href = "https://wa.me/+917280098773?text=" + messageText;
+    });
+
+    // copy link
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(waOpen.href);
+        copyBtn.textContent = "Copied!";
+        setTimeout(()=> copyBtn.textContent = "Copy WhatsApp Link", 1800);
+      } catch (e) {
+        copyBtn.textContent = "Copy failed";
+      }
+    });
+
+    // show full QR
+    showQRBtn.addEventListener('click', () => {
+      qrFullOverlay.style.display = "flex";
+    });
+    closeFull.addEventListener('click', () => qrFullOverlay.style.display = "none");
+    qrFullOverlay.addEventListener('click', function(e){
+      if(e.target === qrFullOverlay) qrFullOverlay.style.display = "none";
+    });
+
+    // accessibility: Esc to close modals
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape'){
+        if(overlay.style.display === 'flex') closeModalFn();
+        if(qrFullOverlay.style.display === 'flex') qrFullOverlay.style.display = 'none';
+      }
+    });
+
+    // If user hasn't replaced QR image, show minimal placeholder (in some browsers)
+    qrImage.onerror = () => {
+      qrImage.style.background = '#fff';
+      qrImage.style.height = '100%';
+      qrImage.style.width = '100%';
+      qrImage.alt = "Please replace phonepe-qr.png with your PhonePe QR image in the site folder";
+      // optional: display text overlay
+      qrImage.parentElement.innerHTML = '<div style="padding:12px;color:#071427;font-weight:700;text-align:center">Replace <code>phonepe-qr.png</code> with your PhonePe QR image in the same folder.</div>';
+    };
+  </script>
+</body>
+</html>
