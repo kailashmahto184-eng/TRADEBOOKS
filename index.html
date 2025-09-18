@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tradebook — Trading Courses</title>
+  <meta name="description" content="Tradebook - Beginner, Medium, Master Trade courses" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b1220;
+      --card: #0f1a2b;
+      --accent: #2dd4bf;
+      --accent-2: #60a5fa;
+      --muted: #9fb3c8;
+    }
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(180deg,#071026 0%, #07122a 100%);
+      color:#e6f2fb;
+    }
+    .container{max-width:1000px;margin:24px auto;padding:18px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;font-weight:800;color:#021427;font-size:20px;
+    }
+    h1{margin:0;font-size:clamp(20px,3.6vw,28px)}
+    .tag{color:var(--muted);font-size:0.95rem}
+
+    .hero{margin-top:18px;padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .lead{color:var(--muted);margin-top:8px}
+
+    .products{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+    .product{
+      display:flex;align-items:center;gap:14px;padding:14px;background:var(--card);border-radius:12px;
+      cursor:pointer;transition:transform .14s ease, box-shadow .14s;
+      text-decoration:none;color:#fff;
+    }
+    .product:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(2,6,23,0.6)}
+    .thumb{
+      width:100px;height:72px;border-radius:10px;background:rgba(255,255,255,0.05);
+      display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--muted);
+    }
+    .pinfo{flex:1}
+    .pinfo h3{margin:0 0 6px 0}
+    .price{font-weight:800;color:var(--accent)}
+    footer{margin-top:20px;color:var(--muted);font-size:0.9rem;text-align:center}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">TB</div>
+        <div>
+          <h1>Tradebook</h1>
+          <div class="tag">Trading courses | Start → Medium → Master</div>
+        </div>
+      </div>
+      <div style="text-align:right">
+        <div class="tag">Contact: <strong>+91 7280098773</strong></div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h2>Tradebook — Trading course series</h2>
+      <p class="lead">3-step learning path: Beginner → Medium → Master Trade. Har book me clear sequence aur practice tasks milenge.</p>
+    </section>
+
+    <main id="products" class="products">
+      <!-- Beginner -->
+      <a class="product" href="upi://pay?pa=6205503024@ybl&pn=Krishu%20Kumar&cu=INR&am=499">
+        <div class="thumb">📘</div>
+        <div class="pinfo">
+          <div class="sequence">1 • Beginner</div>
+          <h3>Beginner Book Course</h3>
+          <div class="muted">Intro to charts, basic strategies, risk management</div>
+        </div>
+        <div style="text-align:right">
+          <div class="price">₹499/-</div>
+        </div>
+      </a>
+
+      <!-- Medium -->
+      <a class="product" href="upi://pay?pa=6205503024@ybl&pn=Krishu%20Kumar&cu=INR&am=899">
+        <div class="thumb">📗</div>
+        <div class="pinfo">
+          <div class="sequence">2 • Medium</div>
+          <h3>Medium Course</h3>
+          <div class="muted">Advanced setups, indicators, journaling</div>
+        </div>
+        <div style="text-align:right">
+          <div class="price">₹899/-</div>
+        </div>
+      </a>
+
+      <!-- Master -->
+      <a class="product" href="upi://pay?pa=6205503024@ybl&pn=Krishu%20Kumar&cu=INR&am=1399">
+        <div class="thumb">📕</div>
+        <div class="pinfo">
+          <div class="sequence">3 • Master</div>
+          <h3>Master Trade</h3>
+          <div class="muted">Professional techniques, psychology, portfolio</div>
+        </div>
+        <div style="text-align:right">
+          <div class="price">₹1399/-</div>
+        </div>
+      </a>
+    </main>
+
+    <footer>
+      ✅ Payment ke baad WhatsApp par DM karein: 
+      <a href="https://wa.me/+917280098773?text=HELLO-SIR/MA'AM" target="_blank">Click Here</a>
+    </footer>
+  </div>
+</body>
+</html>
